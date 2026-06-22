@@ -56,6 +56,20 @@ export default function LoginPage() {
     if (!identifierValid || !passwordValid) return;
 
     setLoading(true);
+
+    const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
+    const payload = btoa(JSON.stringify({
+      sub: "demo-user",
+      name: identifier.split("@")[0],
+      role: "student",
+      iat: Math.floor(Date.now() / 1000),
+      exp: Math.floor(Date.now() / 1000) + 86400,
+    }));
+    const fakeToken = `${header}.${payload}.demo-signature`;
+
+    localStorage.setItem("accessToken", fakeToken);
+    document.cookie = `accessToken=${fakeToken}; path=/; max-age=86400; SameSite=Lax`;
+
     setTimeout(() => {
       setLoading(false);
       router.push("/student");

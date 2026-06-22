@@ -47,7 +47,12 @@ function LogoutDialog({ open, onClose }: { open: boolean; onClose: () => void })
           <Button
             size="sm"
             className="bg-red-500 text-white hover:bg-red-600"
-            onClick={() => router.push("/login")}
+            onClick={() => {
+              localStorage.removeItem("accessToken");
+              localStorage.removeItem("refreshToken");
+              document.cookie = "accessToken=; path=/; max-age=0";
+              router.push("/login");
+            }}
           >
             Ha, chiqish
           </Button>

@@ -130,7 +130,7 @@ export function StudentsTable() {
           <div className="hidden items-center gap-1 rounded-lg border border-slate-200 p-0.5 sm:flex">
             <Button
               variant={view === "list" ? "secondary" : "ghost"}
-              size="icon-sm"
+              size="icon"
               aria-label="Ro'yxat ko'rinishi"
               onClick={() => setView("list")}
             >
@@ -138,7 +138,7 @@ export function StudentsTable() {
             </Button>
             <Button
               variant={view === "grid" ? "secondary" : "ghost"}
-              size="icon-sm"
+              size="icon"
               aria-label="Katak ko'rinishi"
               onClick={() => setView("grid")}
             >
@@ -255,7 +255,7 @@ export function StudentsTable() {
                       <Button
                         asChild
                         variant="ghost"
-                        size="icon-sm"
+                        size="icon"
                         className="text-slate-500 hover:text-slate-900"
                       >
                         <Link
@@ -267,7 +267,7 @@ export function StudentsTable() {
                       </Button>
                       <Button
                         variant="ghost"
-                        size="icon-sm"
+                        size="icon"
                         className="text-slate-500 hover:text-slate-900"
                         aria-label="Tahrirlash"
                       >
@@ -275,7 +275,7 @@ export function StudentsTable() {
                       </Button>
                       <Button
                         variant="ghost"
-                        size="icon-sm"
+                        size="icon"
                         className="text-slate-500 hover:text-red-600"
                         aria-label="O'chirish"
                       >

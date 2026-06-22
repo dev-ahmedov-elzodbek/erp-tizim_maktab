@@ -102,13 +102,13 @@ export default function JadvalPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <Button variant="ghost" size="icon-sm" aria-label="Oldingi hafta">
+            <Button variant="ghost" size="icon" aria-label="Oldingi hafta">
               <ChevronLeft />
             </Button>
             <span className="text-sm font-semibold text-slate-900">
               24-noy — 30-noy, 2025
             </span>
-            <Button variant="ghost" size="icon-sm" aria-label="Keyingi hafta">
+            <Button variant="ghost" size="icon" aria-label="Keyingi hafta">
               <ChevronRight />
             </Button>
             <Button variant="outline" size="sm">
