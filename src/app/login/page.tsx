@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { AuthShell } from "@/components/auth/auth-shell";
 import { SocialAuth } from "@/components/auth/social-auth";
-import { login as apiLogin } from "@/lib/api";
+
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
@@ -57,11 +57,14 @@ export default function LoginPage() {
 
     setLoading(true);
 
+    const isAdmin = identifier === "admin@oquvmarkaz.uz" && password === "admin2026";
+    const role = isAdmin ? "admin" : "student";
+
     const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" }));
     const payload = btoa(JSON.stringify({
-      sub: "demo-user",
-      name: identifier.split("@")[0],
-      role: "student",
+      sub: isAdmin ? "admin-user" : "demo-user",
+      name: isAdmin ? "Administrator" : identifier.split("@")[0],
+      role,
       iat: Math.floor(Date.now() / 1000),
       exp: Math.floor(Date.now() / 1000) + 86400,
     }));
@@ -72,7 +75,7 @@ export default function LoginPage() {
 
     setTimeout(() => {
       setLoading(false);
-      router.push("/student");
+      router.push(isAdmin ? "/admin" : "/student");
     }, 500);
   }
 
