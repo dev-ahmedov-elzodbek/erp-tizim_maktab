@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { apiFetch } from "@/lib/api";
 import {
   ArrowUpRight,
   CheckSquare,
@@ -138,7 +139,7 @@ export default function DashboardPage() {
           apiFetch<{ data: { items: { status: string }[]; total: number } }>("/admin/groups?limit=50"),
         ]);
         setTotalStudents(studentsRes.data.total);
-        setActiveGroupCount(groupsRes.data.items.filter((g) => g.status === "active").length);
+        setActiveGroupCount(groupsRes.data.items.filter((g: { status: string }) => g.status === "active").length);
       } catch {
         setTotalStudents(124);
         setActiveGroupCount(18);
